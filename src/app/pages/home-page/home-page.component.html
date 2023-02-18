@@ -1,0 +1,24 @@
+<section class="section">
+    <div class="container pb-5">
+        <p class="control has-icons-left">
+        <input class="input is-medium is-rounded is-warn" type="email" placeholder="Search...">
+        <span class="icon is-left">
+        <mat-icon color="accent">search</mat-icon>
+        </span></p>
+    </div>
+
+    <app-view-cards-bar (columnUpdated)="updateModeView($event)"></app-view-cards-bar>
+
+    <div class="columns is-flex-wrap-wrap column-gap">
+        <app-card-item class="column is-{{ sizeCard }}-desktop is-12-mobile is-6-tablet"></app-card-item>
+        <app-card-item class="column is-{{ sizeCard }}-desktop is-12-mobile is-6-tablet"></app-card-item>
+        <app-card-item class="column is-{{ sizeCard }}-desktop is-12-mobile is-6-tablet"></app-card-item>
+        <app-card-item class="column is-{{ sizeCard }}-desktop is-12-mobile is-6-tablet"></app-card-item>
+        <app-card-item class="column is-{{ sizeCard }}-desktop is-12-mobile is-6-tablet"></app-card-item>
+        <app-card-item class="column is-{{ sizeCard }}-desktop is-12-mobile is-6-tablet"></app-card-item>
+        <app-card-item class="column is-{{ sizeCard }}-desktop is-12-mobile is-6-tablet"></app-card-item>
+        <app-card-item class="column is-{{ sizeCard }}-desktop is-12-mobile is-6-tablet"></app-card-item>
+        <app-card-item class="column is-{{ sizeCard }}-desktop is-12-mobile is-6-tablet"></app-card-item>
+        <app-card-item class="column is-{{ sizeCard }}-desktop is-12-mobile is-6-tablet"></app-card-item>
+    </div>
+</section>
