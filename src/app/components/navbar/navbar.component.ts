@@ -14,6 +14,6 @@ constructor(private router:Router){}
   ngOnInit(): void {
   }
   openBadge(){
-    this.router.navigate(['/badge'])
+    this.router.navigate(['cart'])
   }
 }

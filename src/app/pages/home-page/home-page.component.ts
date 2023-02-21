@@ -1,3 +1,4 @@
+import { StripeService } from './../../services/stripe.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -8,6 +9,8 @@ import { Component } from '@angular/core';
 export class HomePageComponent {
 
   sizeCard:number = 4;
+
+  constructor(){}
 
   public updateModeView(number: number){
     this.sizeCard = number;
