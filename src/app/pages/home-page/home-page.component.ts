@@ -1,4 +1,6 @@
+import { ProductService } from './../../services/product/product.service';
 import { Component } from '@angular/core';
+import { ProductCardModel } from 'src/app/models/product-card';
 
 @Component({
   selector: 'app-home-page',
@@ -7,7 +9,12 @@ import { Component } from '@angular/core';
 })
 export class HomePageComponent {
 
+  products: Array<ProductCardModel> = new Array();
   sizeCard:number = 4;
+
+  constructor(private service: ProductService){
+    this.service.getAll().subscribe((data: Array<ProductCardModel>) => this.products = data)
+  }
 
   public updateModeView(number: number){
     this.sizeCard = number;

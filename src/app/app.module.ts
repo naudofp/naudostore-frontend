@@ -22,6 +22,10 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { BadgeComponent } from './pages/badge/badge.component';
 import { ViewCardsBarComponent } from './components/home/view-cards-bar/view-cards-bar.component';
 import { CardItemComponent } from './components/home/card-item/card-item.component';
+import { CategoriesPanelComponent } from './components/home/categories-panel/categories-panel.component';
+import { HttpClientModule } from '@angular/common/http';
+import { CreateProductComponent } from './pages/create-product/create-product.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -31,11 +35,14 @@ import { CardItemComponent } from './components/home/card-item/card-item.compone
     NavbarComponent,
     BadgeComponent,
     ViewCardsBarComponent,
-    CardItemComponent
+    CardItemComponent,
+    CategoriesPanelComponent,
+    CreateProductComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     BrowserAnimationsModule,
     MatSidenavModule,
     MatGridListModule,
@@ -48,7 +55,8 @@ import { CardItemComponent } from './components/home/card-item/card-item.compone
     MatTableModule,
     MatBadgeModule,
     MatSnackBarModule,
-    MatListModule
+    MatListModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

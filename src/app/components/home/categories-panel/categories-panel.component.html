@@ -1,0 +1,7 @@
+<div class="container mb-5 is-flex is-justify-content-center">
+    <button 
+     *ngFor="let item of categories"
+     class="button is-medium {{ isLastOrFirstItem(item) }}">
+                {{ item }}
+    </button>
+</div>
