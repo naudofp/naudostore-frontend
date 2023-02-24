@@ -1,5 +1,6 @@
+import { ProductCardModel } from './../../models/product-card';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Product } from './../../models/product';
+import { ProductSavedModel } from './../../models/product';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 
@@ -14,7 +15,13 @@ export class ProductService {
 
   // POST
   
-  save(data : FormData): Observable<Product>{
-    return this.http.post<Product>(this.endPoint, data);
+  save(data : FormData): Observable<ProductSavedModel>{
+    return this.http.post<ProductSavedModel>(this.endPoint, data);
+  }
+
+  // GET 
+  
+  getAll(): Observable<Array<ProductCardModel>> {
+    return this.http.get<Array<ProductCardModel>>(this.endPoint);
   }
 }

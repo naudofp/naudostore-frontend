@@ -1,22 +1,22 @@
-export class ProductSavedModel {
+export class ProductCardModel {
 
     id: string
     name: string
     description: string
-    price: any
+    imageBase64: string
 
-    public build(id: string, name: string, description: string, price: number, image: any){
+    public build(id: string, name: string, description: string, imageBase64: string){
         this.id = id;
         this.name = name;
         this.description = description;
-        this.price = price;
+        this.imageBase64 = imageBase64;
     }
 
     constructor(){
         this.id = "";
         this.name = "";
         this.description = "";
-        this.price = "";
+        this.imageBase64 = "";
     }
 
 }

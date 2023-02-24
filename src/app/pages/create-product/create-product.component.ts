@@ -1,5 +1,6 @@
+import { Router } from '@angular/router';
 import { ProductService } from './../../services/product/product.service';
-import { Product } from './../../models/product';
+import { ProductSavedModel } from './../../models/product';
 import { Component } from '@angular/core';
 
 @Component({
@@ -10,9 +11,13 @@ import { Component } from '@angular/core';
 export class CreateProductComponent {
 
   imageBytes: any = null; 
-  product: Product = new Product();
+  product: ProductSavedModel = new ProductSavedModel();
+  errorMessage = false;
 
-  constructor(private productService: ProductService){
+  constructor(
+    private productService: ProductService,
+    private router: Router
+    ){
 
   }
 
@@ -21,12 +26,24 @@ export class CreateProductComponent {
   }
 
   onSubmit(){
-    const formData = new FormData();
-    formData.append('file', this.imageBytes)
-    formData.append('product', new Blob([JSON.stringify(this.product)], {type: 'application/json'}));
+    if(this.confirmForm()){
+      const formData = new FormData();
+      formData.append('file', this.imageBytes)
+      formData.append('product', new Blob([JSON.stringify(this.product)], {type: 'application/json'}));
+      
+      this.productService.save(formData).subscribe(() => {
+        this.router.navigate(['']);
+      })
+    } else
+      this.errorMessage = true;
     
-    this.productService.save(formData).subscribe((data) => {console.log(data)})
   }
 
+  confirmForm(): boolean{
+    if(this.imageBytes == null || this.product.name == "")
+      return false;
+    else 
+     return true;
+  }
 
 }

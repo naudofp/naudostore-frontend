@@ -9,6 +9,13 @@ input::placeholder{
     font-size: 80%;
 }
 
+.error-message{
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
 .button-submit{
     display: flex;
     align-items: center;

@@ -24,7 +24,10 @@
         <button (click)="onSubmit()" class="button-submit is-left">
                 <mat-icon>done</mat-icon>
         </button>
-            
+        <span *ngIf="errorMessage" class="error-message">
+            <mat-icon color="warn">error</mat-icon>
+            <p class="pl-2 subtitle has-text-danger">Fill in all fields and select an image</p>
+        </span>
     </div>
         
 </div>
