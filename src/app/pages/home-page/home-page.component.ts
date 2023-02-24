@@ -1,4 +1,3 @@
-import { StripeService } from './../../services/stripe.service';
 import { Component } from '@angular/core';
 
 @Component({

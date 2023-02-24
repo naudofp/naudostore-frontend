@@ -24,6 +24,8 @@ import { ViewCardsBarComponent } from './components/home/view-cards-bar/view-car
 import { CardItemComponent } from './components/home/card-item/card-item.component';
 import { CategoriesPanelComponent } from './components/home/categories-panel/categories-panel.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CreateProductComponent } from './pages/create-product/create-product.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -34,11 +36,13 @@ import { HttpClientModule } from '@angular/common/http';
     BadgeComponent,
     ViewCardsBarComponent,
     CardItemComponent,
-    CategoriesPanelComponent
+    CategoriesPanelComponent,
+    CreateProductComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     BrowserAnimationsModule,
     MatSidenavModule,
     MatGridListModule,

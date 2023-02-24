@@ -7,7 +7,6 @@ import { Observable } from 'rxjs';
 })
 export class StripeService {
 
-
   endPoint: string = "http://localhost:8080/payment/"
 
   constructor(private http: HttpClient) { }

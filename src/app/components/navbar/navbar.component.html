@@ -1,11 +1,19 @@
 <mat-toolbar [color]="'accent'" class="is-justify-content-space-between">
     <a routerLink="" class="has-text-white">Welcome to NaudoDEV-Store</a>
-
-    <button mat-icon-button (click)="openBadge()">
-        <mat-icon 
-            [matBadge]="1"
-            [matBadgeColor]="'warn'">
-                shopping_cart
-        </mat-icon>
-    </button>
+    
+    <div>
+        <button mat-icon-button (click)="goToCreateProduct()">
+            <mat-icon>
+                add
+            </mat-icon>
+        </button>
+    
+        <button mat-icon-button (click)="goToBadge()">
+            <mat-icon 
+                [matBadge]="1"
+                [matBadgeColor]="'warn'">
+                    shopping_cart
+            </mat-icon>
+        </button>
+    </div>
 </mat-toolbar>

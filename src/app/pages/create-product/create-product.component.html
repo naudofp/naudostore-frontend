@@ -1,0 +1,30 @@
+
+<div class="columns pt-6 is-flex is-justify-content-center">
+    <div class="column is-3 flex-with-gap">
+        <h1 class="title is-danger">Create a new Product...</h1>
+        
+        <input [(ngModel)]="product.name" class="input is-normal is-large is-rounded is-danger" placeholder="Name" name="name" type="text">
+    
+        <input [(ngModel)]="product.description" class="input is-normal is-large is-rounded is-danger" placeholder="Description" name="description" type="text">
+    
+        <input [(ngModel)]="product.price" class="input is-normal is-large is-rounded is-danger" placeholder="Price" name="price" type="text">
+        
+        <div class="file is-fullwidth is-medium is-black">
+            <label class="file-label">
+                <input type="file" class="file-input" (change)="onFileSelected($event)" name="image">
+                <span class="file-cta">
+                    <span class="file-icon">
+                        <mat-icon>add_photo_alternate</mat-icon>
+                    </span>
+                    <span class="file-label">Choose a file...</span>
+                </span>
+            </label>
+        </div>
+
+        <button (click)="onSubmit()" class="button-submit is-left">
+                <mat-icon>done</mat-icon>
+        </button>
+            
+    </div>
+        
+</div>

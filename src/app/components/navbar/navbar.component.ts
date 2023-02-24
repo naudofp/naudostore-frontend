@@ -13,7 +13,12 @@ constructor(private router:Router){}
 
   ngOnInit(): void {
   }
-  openBadge(){
+
+  goToCreateProduct(){
+    this.router.navigate(['create-product'])
+  }
+
+  goToBadge(){
     this.router.navigate(['cart'])
   }
 }

@@ -1,4 +1,4 @@
-import { StripeService } from './../../services/stripe.service';
+import { StripeService } from '../../services/payment/stripe.service';
 import { Component } from '@angular/core';
 
 declare var StripeCheckout: any;
