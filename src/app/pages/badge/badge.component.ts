@@ -1,3 +1,4 @@
+import { environment } from './../../../environments/environment';
 import { StripeService } from '../../services/payment/stripe.service';
 import { Component } from '@angular/core';
 
@@ -14,21 +15,20 @@ export class BadgeComponent {
 
   constructor(private service: StripeService){
     this.stripeCheckoutHandler = StripeCheckout.configure({
-      key: "pk_test_51MPpLfGVkIvgjRtNVhs6B5Hg117qiOZTZU7niys8TRYcQI5sxMVgakhX9hkFw9U2JjfJNzrfGQkt9wjyMkk2FuNF00FgL6NwbU",
+      key: environment.stripeKey,
       locale: "auto"
     });
   }
 
   doPayment(){
-
-    const amount = 10.0; // substitua pelo valor do pagamento
+    const amount = 10; //TODO
 
     this.stripeCheckoutHandler.open({
-      name: 'Exemplo de pagamento com Stripe',
-      description: 'Exemplo de pagamento',
-      amount: amount * 100,
+      name: '', //TODO
+      description: 'Exemplo de pagamento', //TODO
+      amount: amount * 100, //TODO
       token: (token: any) => {
-        console.log('Token do Stripe:', token.id);
+        console.log('Token do Stripe: ', token.id);
         this.service.openChekout(token.id, amount).subscribe((res: string) => {
           console.log(res)
         });
