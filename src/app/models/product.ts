@@ -16,7 +16,7 @@ export class ProductSavedModel {
         this.id = "";
         this.name = "";
         this.description = "";
-        this.price = "";
+        this.price = null;
     }
 
 }
