@@ -1,3 +1,9 @@
 .card {
-    box-shadow: 0px 5px 10px 2px #e30af280;
+    border: 2px solid blue;
+    border-radius: 20px;
+}
+
+.card-image {
+    padding: 10px;
+    border-radius: 25px;
 }
