@@ -27,6 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CreateProductComponent } from './pages/create-product/create-product.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule, CurrencyPipe } from '@angular/common';
+import { InfoProductComponent } from './pages/info-product/info-product.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { CommonModule, CurrencyPipe } from '@angular/common';
     ViewCardsBarComponent,
     CardItemComponent,
     CategoriesPanelComponent,
-    CreateProductComponent
+    CreateProductComponent,
+    InfoProductComponent
   ],
   imports: [
     BrowserModule,

@@ -10,7 +10,7 @@ import { ProductCardModel } from 'src/app/models/product-card';
 export class HomePageComponent {
 
   products: Array<ProductCardModel> = new Array();
-  sizeCard:number = 3;
+  sizeCard: number = 3;
 
   constructor(private service: ProductService){
     this.service.getAll().subscribe((data: Array<ProductCardModel>) => this.products = data)
