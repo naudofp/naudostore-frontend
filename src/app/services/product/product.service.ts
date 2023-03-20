@@ -24,4 +24,8 @@ export class ProductService {
   getAll(): Observable<Array<ProductCardModel>> {
     return this.http.get<Array<ProductCardModel>>(this.endPoint);
   }
+
+  getOne(id: string): Observable<ProductCardModel> {
+    return this.http.get<ProductCardModel>(this.endPoint + '/' + id);
+  }
 }

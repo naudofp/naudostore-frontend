@@ -11,7 +11,13 @@
     <app-view-cards-bar (columnUpdated)="updateModeView($event)"></app-view-cards-bar>
 
     <div class="columns is-flex-wrap-wrap column-gap">
-        <app-card-item *ngFor="let product of products" [product]="product" class="column is-{{ sizeCard }}-desktop is-12-mobile is-6-tablet"></app-card-item>
+        
+        <app-card-item 
+            *ngFor="let product of products"
+            [product]="product"
+            class="column is-{{ sizeCard }}-desktop is-12-mobile is-6-tablet is-clickable">
+        </app-card-item>
+
         <h1 class="title" *ngIf="products.length == 0">No Product</h1>
     </div>
 </section>
