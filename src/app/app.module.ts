@@ -28,6 +28,7 @@ import { CreateProductComponent } from './pages/create-product/create-product.co
 import { FormsModule } from '@angular/forms';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { InfoProductComponent } from './pages/info-product/info-product.component';
+import { CardItemBadgeComponent } from './components/badge/card-item-badge/card-item-badge.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { InfoProductComponent } from './pages/info-product/info-product.componen
     CardItemComponent,
     CategoriesPanelComponent,
     CreateProductComponent,
-    InfoProductComponent
+    InfoProductComponent,
+    CardItemBadgeComponent
   ],
   imports: [
     BrowserModule,

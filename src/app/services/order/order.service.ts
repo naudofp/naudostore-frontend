@@ -10,7 +10,7 @@ export class OrderService {
   constructor() {
   }
 
-  addItem(idProduct: string, quantity: number) {
+  addItem(idProduct: string, quantity: number, price: number) {
 
     if(localStorage.getItem('order') == null) {
       const order = {
@@ -19,7 +19,8 @@ export class OrderService {
                 quantity: quantity,
                 idProduct : idProduct 
             }
-        ]
+        ],
+          amount: price * quantity
       }
 
       localStorage.setItem('order', JSON.stringify(order))
@@ -31,7 +32,8 @@ export class OrderService {
           idProduct: idProduct
         }
 
-      let order = JSON.parse(this.getOrder()); 
+      let order = JSON.parse(this.getOrder());
+      order.amount += price * quantity; 
       order.items.push(newItem);
 
       localStorage.setItem('order', JSON.stringify(order))

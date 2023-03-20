@@ -1,0 +1,13 @@
+.titles{
+    width: 70%;
+}
+
+.card {
+    box-shadow: none;
+}
+
+
+.container-price {
+    width: 11%; 
+    text-align: center;
+}

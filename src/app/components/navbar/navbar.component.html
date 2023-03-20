@@ -10,7 +10,7 @@
     
         <button mat-icon-button (click)="goToBadge()">
             <mat-icon 
-                [matBadge]="1"
+                [matBadge]="getNumberItems()"
                 [matBadgeColor]="'warn'">
                     shopping_cart
             </mat-icon>

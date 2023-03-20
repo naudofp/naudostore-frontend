@@ -1,4 +1,5 @@
-.testezao {
-    width: 1000px;
-
+mat-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }

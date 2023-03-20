@@ -21,7 +21,6 @@ export class InfoProductComponent {
     private orderService: OrderService
     ){
       this.getProduct();
-      localStorage.clear()
   }
   
   getProduct(){
@@ -30,7 +29,7 @@ export class InfoProductComponent {
 
   addItemToCard(quantity: string){
     if(quantity.length >= 1) {
-     this.orderService.addItem(this.product.id, Number.parseInt(quantity));
+     this.orderService.addItem(this.product.id, Number.parseInt(quantity), this.product.price);
     } else {
       window.alert('Quantity unvalid')
     }

@@ -1,1 +1,18 @@
-<button (click)="doPayment()">Pagar</button>
+<section class="section">
+    <div class="container">
+        <div class="card is-flex is-flex-direction-column is-align-items-center">
+            <h1 class="title is-2 pt-6">Your Badge<span *ngIf="order == null"> is empty</span></h1>
+            
+            <div class="card-content is-flex is-flex-direction-column is-align-items-center">
+                <div class="content">
+                    <app-card-item-badge *ngFor="let item of order.items" [item]="item"></app-card-item-badge>
+                </div>
+                
+                <div class="box">
+                    <p class="title is-4 m-0 p-0">{{ order.amount | currency : 'BRL' }}</p>
+                </div>
+                <button class="button is-large is-rounded is-link">Prosseguir para o pagamento</button>
+            </div>
+        </div>
+    </div>
+</section>
