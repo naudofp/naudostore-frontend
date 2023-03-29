@@ -1,3 +1,5 @@
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -6,8 +8,9 @@ import { Injectable } from '@angular/core';
 export class OrderService {
 
   storage =  window.localStorage; 
+  baseurl = "http://localhost:8080/api/order"
 
-  constructor() {
+  constructor(private http: HttpClient) {
   }
 
   addItem(idProduct: string, quantity: number, price: number) {
@@ -44,5 +47,29 @@ export class OrderService {
   getOrder() : any{
     let order = localStorage.getItem('order');
     return order;
+  }
+
+  // API/POST
+
+  public createOrder(order: any): Observable<any>{
+    return this.http.post<any>(this.baseurl, order)
+  }
+
+
+  removeItem(item: any) {
+    let order = JSON.parse(this.getOrder());
+  
+    for(var i = 0; i <= order.items.length; i++){
+
+      if(order.items[i].idProduct == item.id) {
+        order.items.splice(i, 1)
+        order.amount -= item.itemValue;
+        break;
+      }
+    }
+
+    console.log(order.items);
+    
+    localStorage.setItem('order', JSON.stringify(order));
   }
 }

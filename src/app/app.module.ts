@@ -30,7 +30,6 @@ import { CommonModule, CurrencyPipe } from '@angular/common';
 import { InfoProductComponent } from './pages/info-product/info-product.component';
 import { CardItemBadgeComponent } from './components/badge/card-item-badge/card-item-badge.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +41,7 @@ import { CardItemBadgeComponent } from './components/badge/card-item-badge/card-
     CategoriesPanelComponent,
     CreateProductComponent,
     InfoProductComponent,
-    CardItemBadgeComponent
+    CardItemBadgeComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,11 +1,14 @@
-<div (click)="productInfo()" class="box is-flex p-3 is-justify-content-space-between">
+<div class="box is-flex p-3 is-justify-content-space-between">
+    <div (click)="productInfo()" class="is-flex">
         <img [src]="product.imageBase64" class="image is-128x128">
         <div class="card-content">
             <p class="subtitle is-4">{{ product.name }}</p>
             <p class="subtitle is-6">{{ product.description.substring(0,120) }}</p>
         </div>
-        <div class="container-price is-flex is-flex-direction-column is-justify-content-center">
-            <p class="title is-5">{{ product.price * item.quantity | currency : 'BRL' }}</p>
-            <p class="subtitle pt-2">{{ "x" + item.quantity }}</p>
-        </div>
+    </div>
+    <div class="container-price is-flex is-flex-direction-column is-justify-content-center is-align-items-center">
+        <p class="title is-5">{{ product.price * item.quantity | currency : 'BRL' }}</p>
+        <p class="subtitle pt-2">{{ "x" + item.quantity }}</p>
+        <button mat-icon-button (click)="onRemoveItem()"><mat-icon>delete</mat-icon></button>
+    </div>
 </div>

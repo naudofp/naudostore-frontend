@@ -1,7 +1,7 @@
 import { OrderService } from './../../../services/order/order.service';
 import { ProductService } from './../../../services/product/product.service';
 import { ProductCardModel } from './../../../models/product-card';
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -16,6 +16,10 @@ export class CardItemBadgeComponent implements OnInit{
   
   @Input()
   item: any;
+
+  @Output()
+  removeItem = new EventEmitter<any>();
+
   amount: number = 0;
   
   constructor(
@@ -28,6 +32,11 @@ export class CardItemBadgeComponent implements OnInit{
   ngOnInit(): void {
     this.getProduct()
     this.amount = this.item.quantity * this.product.price;
+  }
+
+  public onRemoveItem() {
+    let amountItem = this.item.quantity * this.product.price;
+    this.removeItem.emit({id: this.product.id, itemValue: amountItem})
   }
 
   productInfo(){

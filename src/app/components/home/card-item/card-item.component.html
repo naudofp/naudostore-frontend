@@ -6,7 +6,7 @@
         </div>
         <div class="card-content">
             <div class="media-content">
-                <p class="title is-5 is-spaced">{{ product.name.substring(0, 40) + "..." | uppercase }}</p>
+                <p class="title is-5 is-spaced">{{ product.name.substring(0, 20) + "..." | uppercase }}</p>
                 <p class="subtitle is-4 has-text-link is-bold">{{ product.price | currency: 'R$' }}</p>
               <p class="subtitle is-6">{{ product.description.substring(0, 30) + "..."}}</p>
             </div>

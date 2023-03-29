@@ -6,6 +6,9 @@
     box-shadow: none;
 }
 
+.button{
+    z-index: 1000000;
+}
 
 .container-price {
     width: 11%; 

@@ -11,8 +11,11 @@ export class StripeService {
 
   constructor(private http: HttpClient) { }
 
-  openChekout(token: any, amount: any): Observable<string>{
-    const params = new HttpParams().set('stripeToken', token).set('amount', amount);
+  openChekout(token: any, amount: any, orderId: string): Observable<string>{
+    const params = new HttpParams()
+      .set('stripeToken', token)
+      .set('amount', amount)
+      .set('orderId', orderId);
     return this.http.post<string>(this.endPoint + "/charge", null, {params: params});
   }
 }

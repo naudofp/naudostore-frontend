@@ -1,11 +1,9 @@
-import { CardItemBadgeComponent } from './../../components/badge/card-item-badge/card-item-badge.component';
-import { ProductCardModel } from './../../models/product-card';
-import { ProductService } from './../../services/product/product.service';
+import { Router } from '@angular/router';
 import { OrderService } from './../../services/order/order.service';
 import { environment } from './../../../environments/environment';
 import { StripeService } from '../../services/payment/stripe.service';
-import { Component, Output } from '@angular/core';
-import { OrderInfo } from '../../models/order-info';
+import { Component } from '@angular/core';
+import { switchMap } from 'rxjs';
 
 declare var StripeCheckout: any;
 
@@ -17,11 +15,13 @@ declare var StripeCheckout: any;
 export class BadgeComponent {
 
   private stripeCheckoutHandler: any;
-  order: any = JSON.parse(this.orderService.getOrder());
+  orderStorage: any = JSON.parse(this.orderService.getOrder());
 
   constructor(
     private service: StripeService,
     private orderService: OrderService,
+    private stripeService: StripeService,
+    private router: Router
   ){
     this.stripeCheckoutHandler = StripeCheckout.configure({
       key: environment.stripeKey,
@@ -29,22 +29,38 @@ export class BadgeComponent {
     });
   }
 
-  doPayment(){
-    const amount = 10; //TODO
-
-    this.stripeCheckoutHandler.open({
-      name: '', //TODO
-      description: 'Exemplo de pagamento', //TODO
-      amount: amount * 100, //TODO
-      token: (token: any) => {
-        console.log('Token do Stripe: ', token.id);
-        this.service.openChekout(token.id, amount).subscribe((res: string) => {
-          console.log(res)
-        });
-      }
-    });
+  removeItem(product : any) {
+    this.orderService.removeItem(product);
+    location.reload()
   }
 
+  discart(){
+    localStorage.clear()
+    this.router.navigate(['']);
+  }
 
-  
+  public createOrder(){
+    let idOrder: string;
+    
+    this.orderService.createOrder(this.orderStorage)
+    .pipe(
+      switchMap(result => {
+        result = idOrder = result.id;
+        console.log(result);
+
+        return this.stripeCheckoutHandler.open({
+          name: '', //TODO
+          description: 'Exemplo de pagamento', //TODO
+          amount: this.orderStorage.amount * 100, //TODO
+          token: (token: any) => {
+            console.log("Stripe Token: " + token);
+            
+            this.service.openChekout(token.id, this.orderStorage.amount, idOrder).subscribe(res => console.log(res));
+          }
+        });
+      }))
+      .subscribe(res => {
+        console.log(res)
+      });
+  }
 }
