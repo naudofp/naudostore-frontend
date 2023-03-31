@@ -1,0 +1,33 @@
+mat-icon{
+    color: black
+}
+
+.button {
+    border: none;
+}
+
+.card {
+    box-shadow: 0px 0px 20px #00000025;
+}
+
+.quantity {
+    width: 15%;
+    border-radius: 20%;
+    text-align: center;
+}
+
+.container-buttons {
+    gap: 7%
+}
+
+@media (max-width: 800px) {
+
+    .card{
+        box-shadow: none;
+    }
+
+    .quantity {
+        width: 25%;
+    }
+
+}

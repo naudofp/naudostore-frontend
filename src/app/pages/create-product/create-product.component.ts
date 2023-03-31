@@ -2,11 +2,13 @@ import { Router } from '@angular/router';
 import { ProductService } from './../../services/product/product.service';
 import { ProductSavedModel } from './../../models/product';
 import { Component } from '@angular/core';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-create-product',
   templateUrl: './create-product.component.html',
-  styleUrls: ['./create-product.component.css']
+  styleUrls: ['./create-product.component.css'],
+  providers: [CurrencyPipe]
 })
 export class CreateProductComponent {
 
@@ -18,7 +20,6 @@ export class CreateProductComponent {
     private productService: ProductService,
     private router: Router
     ){
-
   }
 
   onFileSelected(file: any){

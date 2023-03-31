@@ -7,12 +7,15 @@ import { Observable } from 'rxjs';
 })
 export class StripeService {
 
-  endPoint: string = "http://localhost:8080/payment/"
+  endPoint: string = "http://localhost:8080/api/payment"
 
   constructor(private http: HttpClient) { }
 
-  openChekout(token: any, amount: any): Observable<string>{
-    const params = new HttpParams().set('stripeToken', token).set('amount', amount);
-    return this.http.post<string>(this.endPoint + "charge", null, {params: params});
+  openChekout(token: any, amount: any, orderId: string): Observable<string>{
+    const params = new HttpParams()
+      .set('stripeToken', token)
+      .set('amount', amount)
+      .set('orderId', orderId);
+    return this.http.post<string>(this.endPoint + "/charge", null, {params: params});
   }
 }

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -26,7 +26,9 @@ import { CategoriesPanelComponent } from './components/home/categories-panel/cat
 import { HttpClientModule } from '@angular/common/http';
 import { CreateProductComponent } from './pages/create-product/create-product.component';
 import { FormsModule } from '@angular/forms';
-
+import { CommonModule, CurrencyPipe } from '@angular/common';
+import { InfoProductComponent } from './pages/info-product/info-product.component';
+import { CardItemBadgeComponent } from './components/badge/card-item-badge/card-item-badge.component';
 
 @NgModule({
   declarations: [
@@ -37,12 +39,15 @@ import { FormsModule } from '@angular/forms';
     ViewCardsBarComponent,
     CardItemComponent,
     CategoriesPanelComponent,
-    CreateProductComponent
+    CreateProductComponent,
+    InfoProductComponent,
+    CardItemBadgeComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    CommonModule,
     BrowserAnimationsModule,
     MatSidenavModule,
     MatGridListModule,
@@ -58,7 +63,8 @@ import { FormsModule } from '@angular/forms';
     MatListModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,3 +1,13 @@
 .card {
-    box-shadow: 0px 5px 10px 2px #e30af280;
+    border-radius: 20px;
+    transition: 0.5s;
+}
+
+.card-image {
+    padding: 10px;
+    border-radius: 25px;
+}
+
+.card:hover {
+    box-shadow: 0px 10px 25px #0000007a;
 }

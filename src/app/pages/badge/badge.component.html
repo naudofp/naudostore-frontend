@@ -1,1 +1,36 @@
-<button (click)="doPayment()">Pagar</button>
+<section class="section">
+    <div class="container">
+        <div class="card is-flex is-flex-direction-column is-align-items-center">
+            <h1 class="title is-2 pt-6">Your Badge<span *ngIf="orderStorage == null"> is empty</span></h1>
+            
+            <div class="card-content is-flex is-flex-direction-column is-align-items-center">
+                <div class="content">
+                    <app-card-item-badge class="is-clickable" *ngFor="let item of orderStorage.items" (removeItem)="removeItem($event)" [item]="item"></app-card-item-badge>
+                </div>
+                
+                <div class="box">
+                    <p class="title is-4 m-0 p-0">{{ orderStorage.amount | currency : 'BRL' }}</p>
+                </div>
+
+                <div class="section is-flex is-flex-direction-column is-align-items-center">
+                    <p class="subtitle is-4">How would you like to pay?</p>
+                    <div class="is-flex">
+                        <mat-card class="card card-pay is-clickable mr-6 is-flex is-justify-content-center">
+                            <mat-card-content>
+                                <img class="image" src="../../../assets/pix-106.svg">
+                            </mat-card-content>
+                        </mat-card>
+
+                        <mat-card (click)="createOrder()" class="card card-pay p-4 is-clickable">
+                            <mat-card-content>
+                                <img class="image" src="../../../assets/credit_card_payment_finance_credit_card_icon_124664.svg">
+                            </mat-card-content>
+                        </mat-card>
+                    </div>
+
+                </div>
+                <button (click)="discart()" class="button is-small is-link">Discard Cart</button>
+            </div>
+        </div>
+    </div>
+</section>

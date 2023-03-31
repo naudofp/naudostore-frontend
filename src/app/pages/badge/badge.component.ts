@@ -1,5 +1,9 @@
+import { Router } from '@angular/router';
+import { OrderService } from './../../services/order/order.service';
+import { environment } from './../../../environments/environment';
 import { StripeService } from '../../services/payment/stripe.service';
 import { Component } from '@angular/core';
+import { switchMap } from 'rxjs';
 
 declare var StripeCheckout: any;
 
@@ -11,31 +15,52 @@ declare var StripeCheckout: any;
 export class BadgeComponent {
 
   private stripeCheckoutHandler: any;
+  orderStorage: any = JSON.parse(this.orderService.getOrder());
 
-  constructor(private service: StripeService){
+  constructor(
+    private service: StripeService,
+    private orderService: OrderService,
+    private stripeService: StripeService,
+    private router: Router
+  ){
     this.stripeCheckoutHandler = StripeCheckout.configure({
-      key: "pk_test_51MPpLfGVkIvgjRtNVhs6B5Hg117qiOZTZU7niys8TRYcQI5sxMVgakhX9hkFw9U2JjfJNzrfGQkt9wjyMkk2FuNF00FgL6NwbU",
+      key: environment.stripeKey,
       locale: "auto"
     });
   }
 
-  doPayment(){
-
-    const amount = 10.0; // substitua pelo valor do pagamento
-
-    this.stripeCheckoutHandler.open({
-      name: 'Exemplo de pagamento com Stripe',
-      description: 'Exemplo de pagamento',
-      amount: amount * 100,
-      token: (token: any) => {
-        console.log('Token do Stripe:', token.id);
-        this.service.openChekout(token.id, amount).subscribe((res: string) => {
-          console.log(res)
-        });
-      }
-    });
-
-   
+  removeItem(product : any) {
+    this.orderService.removeItem(product);
+    location.reload()
   }
 
+  discart(){
+    localStorage.clear()
+    this.router.navigate(['']);
+  }
+
+  public createOrder(){
+    let idOrder: string;
+    
+    this.orderService.createOrder(this.orderStorage)
+    .pipe(
+      switchMap(result => {
+        result = idOrder = result.id;
+        console.log(result);
+
+        return this.stripeCheckoutHandler.open({
+          name: '', //TODO
+          description: 'Exemplo de pagamento', //TODO
+          amount: this.orderStorage.amount * 100, //TODO
+          token: (token: any) => {
+            console.log("Stripe Token: " + token);
+            
+            this.service.openChekout(token.id, this.orderStorage.amount, idOrder).subscribe(res => console.log(res));
+          }
+        });
+      }))
+      .subscribe(res => {
+        console.log(res)
+      });
+  }
 }
