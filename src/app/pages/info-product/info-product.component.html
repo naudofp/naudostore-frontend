@@ -10,31 +10,38 @@
     </p>
 
     <div class="container">
-        <div class="columns is-flex is-flex-direction-column is-align-items-center">
+        <div class="columns is-flex is-flex-direction-row is-align-items-flex-start">
             <div class="column is-6-desktop">
-                <div class="card has-background-light">
-                    <div class="card-image">
-                      <figure class="image is-4by3">
-                        <img [src]="product.imageBase64" alt="Placeholder image">
-                      </figure>
-                    </div>
-                    <div class="card-content">
-                      <div class="media">
-                        <div class="media-content">
-                            <p class="title is-3 is-spaced">{{ product.name | uppercase}}</p>
-                            <p class="subtitle is-4">{{ product.price | currency: 'BRL' }}</p>
-                            <div class="is-flex container-buttons is-justify-content-center">
-                                <button (click)="addItemToCard(quantity.value)" class="button is-large is-rounded is-link">Add to cart</button>
-                                <input class="input is-link quantity is-large" type="number" #quantity name="quantity">
-                            </div>
+                
+                <div class="card">
+                      <div class="card-image">
+                        <div class="image is-2by3">
+                          <img [src]="product.imageBase64" alt="Placeholder image">
                         </div>
                       </div>
-                      <div class="content subtitle is-6 is-spaced">
-                         {{ product.description }}
+                </div>
+
+            </div>
+
+            <div class="column is-6-desktop">
+              <div class="card">
+                  <div class="card-content">
+                    <div class="media">
+                      <div class="media-content">
+                          <p class="title is-3 is-spaced">{{ product.name | uppercase}}</p>
+                          <p class="subtitle is-4">{{ product.price | currency: 'BRL' }}</p>
+                          <div class="is-flex container-buttons is-justify-content-center">
+                              <button (click)="addItemToCard(quantity.value)" class="button is-large is-rounded is-link">Add to cart</button>
+                              <input class="input is-link quantity is-large" type="number" #quantity name="quantity">
+                          </div>
                       </div>
                     </div>
+                    <div class="content subtitle is-6 is-spaced">
+                      {{ product.description }}
+                    </div>
                   </div>
-            </div>
+               </div>
+             </div>
         </div>
-    </div>
+      </div>
 </section>
